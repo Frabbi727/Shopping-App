@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/providers/cart.dart';
+import 'package:shopping_app/widgets/badge.dart';
 import 'package:shopping_app/widgets/product_grid.dart';
+import 'package:provider/provider.dart';
 
-enum FiletrOptions{
-  Favourite,All,
-
+enum FiletrOptions {
+  Favourite,
+  All,
 }
 
 class ProductOverviewScreen extends StatefulWidget {
@@ -23,11 +26,10 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             onSelected: (FiletrOptions selectedValue) {
               print(selectedValue);
               setState(() {
-                if(selectedValue ==FiletrOptions.Favourite){
-                  _showOnlyFavourites=true;
-                
-                }else{
-                  _showOnlyFavourites=false;
+                if (selectedValue == FiletrOptions.Favourite) {
+                  _showOnlyFavourites = true;
+                } else {
+                  _showOnlyFavourites = false;
                 }
               });
             },
@@ -43,6 +45,17 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               ),
             ],
           ),
+          Consumer<Cart>(
+            builder: (_, cart, child) => Badge(
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.shopping_cart,
+                ),
+              ),
+              value: cart.itemCount.toString(),
+            ),
+          )
         ],
       ),
       body: ProductGrid(_showOnlyFavourites),
