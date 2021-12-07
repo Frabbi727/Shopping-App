@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/providers/cart.dart';
+import 'package:shopping_app/screens/cart_scree.dart';
 import 'package:shopping_app/widgets/badge.dart';
 import 'package:shopping_app/widgets/product_grid.dart';
 import 'package:provider/provider.dart';
+import '../screens/cart_scree.dart';
 
 enum FiletrOptions {
   Favourite,
@@ -48,7 +50,9 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
           Consumer<Cart>(
             builder: (_, cart, child) => Badge(
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(CartScreen.route);
+                },
                 icon: Icon(
                   Icons.shopping_cart,
                 ),
