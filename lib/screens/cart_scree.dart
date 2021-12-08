@@ -9,7 +9,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
-    final cartItems = cart.items.entries.map((e) => e.value).toList();
+    // final cartItems = cart.items.entries.map((e) => e.value).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -50,10 +50,18 @@ class CartScreen extends StatelessWidget {
             child: ListView.builder(
                 itemCount: cart.items.length,
                 itemBuilder: (ctx, i) => CartItemDisplay(
-                      id: cartItems[i].id,
-                      price: cartItems[i].price,
-                      quantity: cartItems[i].quantity,
-                      title: cartItems[i].title,
+                      // id: cartItems[i].id,
+
+                      // price: cartItems[i].price,
+                      // quantity: cartItems[i].quantity,
+                      // title: cartItems[i].title,
+
+                      ////////////////////
+                      id: cart.items.values.toList()[i].id,
+                      productId: cart.items.keys.toList()[i],
+                      price: cart.items.values.toList()[i].price,
+                      quantity: cart.items.values.toList()[i].quantity,
+                      title: cart.items.values.toList()[i].title,
                     )),
           ),
         ],
