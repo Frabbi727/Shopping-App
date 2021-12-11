@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/providers/cart.dart';
-import 'package:shopping_app/screens/cart_scree.dart';
-import 'package:shopping_app/widgets/badge.dart';
-import 'package:shopping_app/widgets/product_grid.dart';
-import 'package:provider/provider.dart';
+import '../providers/cart.dart';
 import '../screens/cart_scree.dart';
+import '../widgets/app_drawer.dart';
+import '../widgets/badge.dart';
+import '../widgets/product_grid.dart';
+import 'package:provider/provider.dart';
 
 enum FiletrOptions {
   Favourite,
@@ -51,7 +51,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             builder: (_, cart, child) => Badge(
               child: IconButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed(CartScreen.route);
+                  Navigator.of(context).pushNamed(CartScreen.routeName);
                 },
                 icon: Icon(
                   Icons.shopping_cart,
@@ -62,6 +62,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
           )
         ],
       ),
+      drawer: AppDrawer(),
       body: ProductGrid(_showOnlyFavourites),
     );
   }

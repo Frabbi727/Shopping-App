@@ -18,6 +18,7 @@ class CartItemDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   // var total= (price * quantity).toStringAsFixed(2);
     return Dismissible(
       onDismissed: (direction) {
         Provider.of<Cart>(context, listen: false).removeItems(productId);
