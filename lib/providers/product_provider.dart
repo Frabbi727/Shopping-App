@@ -8,7 +8,7 @@ class Products with ChangeNotifier {
       id: 'p1',
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
-      price: 29.99,
+      price: 25.25,
       imageUrl:
           'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
     ),
@@ -16,7 +16,7 @@ class Products with ChangeNotifier {
       id: 'p2',
       title: 'Yellow Scarf',
       description: 'Warm and cozy, what you need for winter',
-      price: 59.99,
+      price: 30.00,
       imageUrl:
           'https://thumbs.dreamstime.com/z/yellow-knitted-scarf-18952858.jpg',
     ),
@@ -24,7 +24,7 @@ class Products with ChangeNotifier {
       id: 'p3',
       title: 'A pan',
       description: 'Prepare any meal you want',
-      price: 20.99,
+      price: 20.20,
       imageUrl:
           'https://5.imimg.com/data5/CS/XL/MY-910175/master-non-stick-frypan-500x500.png',
     ),
@@ -32,7 +32,7 @@ class Products with ChangeNotifier {
       id: 'p4',
       title: 'Trouser',
       description: 'Any style goes beyond',
-      price: 10.99,
+      price: 10.50,
       imageUrl:
           'https://images.sportsdirect.com/images/products/36206203_l.jpg',
     ),

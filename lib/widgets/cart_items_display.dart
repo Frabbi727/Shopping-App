@@ -18,8 +18,32 @@ class CartItemDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // var total= (price * quantity).toStringAsFixed(2);
+    // var total= (price * quantity).toStringAsFixed(2);
     return Dismissible(
+      confirmDismiss: (direction) {
+        return showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            backgroundColor: Theme.of(context).dialogBackgroundColor,
+            title: Text('Are You Sure?'),
+            content: Text('Do you want to remove the item?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop(false);
+                },
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop(true);
+                },
+                child: Text('Yes'),
+              ),
+            ],
+          ),
+        );
+      },
       onDismissed: (direction) {
         Provider.of<Cart>(context, listen: false).removeItems(productId);
       },

@@ -37,7 +37,6 @@ class ProductItem extends StatelessWidget {
           leading: Consumer<Product>(
             builder: (ctx, product, child) => IconButton(
               onPressed: () {
-                
                 product.toggleFavouriteStatus();
               },
               icon: Icon(
@@ -48,6 +47,18 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Added to Cart!'),
+                  duration: Duration(seconds: 5),
+                  action: SnackBarAction(
+                      label: 'UNDO',
+                      onPressed: () {
+                        cart.removedSingelItems(product.id);
+                      }),
+                ),
+              );
             },
             icon: Icon(Icons.shopping_cart),
             color: Theme.of(context).accentColor,
