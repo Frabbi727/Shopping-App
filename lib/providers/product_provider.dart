@@ -4,7 +4,7 @@ import 'product.dart';
 
 class Products with ChangeNotifier {
   List<Product> _items = [
-      Product(
+    Product(
       id: 'p1',
       title: 'Red Shirt',
       description: 'A red shirt - it is pretty red!',
@@ -41,14 +41,25 @@ class Products with ChangeNotifier {
   List<Product> get items {
     return [..._items];
   }
-  List<Product> get favouriteItems{
+
+  List<Product> get favouriteItems {
     return _items.where((prodItem) => prodItem.isFavourite).toList();
   }
-  Product findById(String id){
-    return _items.firstWhere((prod) => prod.id==id);
+
+  Product findById(String id) {
+    return _items.firstWhere((prod) => prod.id == id);
   }
 
-  addProduct() {
+  addProduct(Product product) {
+    final newProduct = Product(
+      id: DateTime.now().toString(),
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+    );
+    _items.add(newProduct); //end at the list
+    //_items.insert(0, newProduct); // begining at the list
     notifyListeners();
   }
 }
