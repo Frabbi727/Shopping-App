@@ -18,7 +18,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _imageUrlFocusedNode = FocusNode();
   final _formKey = GlobalKey<FormState>();
   var _editedProduct = Product(
-    id: null.toString(),
+    id: '', //i used '' for providing product id as null, when is use null it giving me some problem
     title: '',
     description: '',
     price: 0,
@@ -94,13 +94,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
     print(_editedProduct.description);
     print(_editedProduct.imageUrl);
 
-    if (_editedProduct.id != null) {
+    if (_editedProduct.id != '') {
+      //solutiont i use here is '' intatete of null.toString() i think this now wokring perfectly, logic is if id != '' which mean "id has value"
+      //then it will go for upDate method and update the existing product
+      //and in else case id does not have valu and it will go for add a new items in the product list
       Provider.of<Products>(context, listen: false)
           .updateProduct(_editedProduct.id, _editedProduct);
     } else {
       Provider.of<Products>(context, listen: false).addProduct(_editedProduct);
     }
-
+    
     Navigator.of(context).pop();
   }
 
